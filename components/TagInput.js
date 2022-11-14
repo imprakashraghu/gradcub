@@ -10,7 +10,8 @@ function TagInput({
     required=false,
     defaultTags=[],
     clearInput=ci=>ci,
-    helperText=''
+    helperText='',
+    suggestionList=[]
 }) {
 
     const id = useId()
@@ -76,8 +77,16 @@ function TagInput({
                 placeholder={placeholder}
                 onKeyDown={onKeyDown}
                 onKeyUp={onKeyUp}
+                list={'tagsinput-'+label}
                 className={`w-full bg-transparent p-3 outline-none focus:outline-none ${tags?.length && 'ml-2'}`}
             />
+            <datalist id={'tagsinput-'+label}>
+                {
+                    suggestionList?.map((item, idx) => (
+                        <option key={idx} value={item?.key}>{item?.name}</option>
+                    ))
+                }
+            </datalist>
         </div>
         <p className='w-full text-xs italic text-gray-600 py-1 text-left'>
             {helperText}

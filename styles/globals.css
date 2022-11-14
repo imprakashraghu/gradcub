@@ -34,6 +34,6 @@ input:checked + div svg {
   }
   body {
     color: black;
-    background: whitesmoke;
+    background: white;
   }
 }

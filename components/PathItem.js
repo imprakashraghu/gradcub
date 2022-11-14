@@ -10,7 +10,8 @@ function PathItem({
     interests=0,
     icon,
     slug,
-    isLoading=false
+    isLoading=false,
+    skills=[]
 }) {
   return (
     <>
@@ -48,6 +49,11 @@ function PathItem({
                 <p className='line-clamp-3 text-justify text-sm text-black font-light'>
                     {shortDescription}
                 </p>
+                {/* <div className='flex flex-row items-center py-1 overflow-x-auto w-full '>
+                    {skills?.map((item) => (
+                        <span key={item?.skill_id?.skill_name} className='bg-gray-300 mr-1 text-black rounded text-xs px-2 py-1'>{item?.skill_id?.skill_name}</span>
+                    ))}
+                </div> */}
             </div>
         </Link> 
     ):(

@@ -11,36 +11,35 @@ function Header() {
 
   return (
     <>
-        <div className='w-full flex flex-row items-center py-5 px-24 justify-center'>
+        <div className='bg-white bg-opacity-50  backdrop-blur shadow fixed w-full flex flex-row items-center py-4 px-24 justify-between z-20'>
             <Brand />
-            <div className='flex flex-row items-center'>
-                <Link href='/explore'>
-                    <p className={`text-black font-medium text-center mx-3 mb-1 ${router.pathname==='/explore'?'mb-0':'py-2'}`}>Explore</p>
-                    <div className={`${router.pathname==='/explore'?'block':'hidden'} w-9/12 mx-auto h-1 bg-black border`}></div>
-                </Link>
-                <Link href='/choose'>
-                    <p className={`text-black font-medium text-center mx-3 mb-1 ${router.pathname==='/choose'?'mb-0':'py-2'}`}>Choose Path</p>
-                    <div className={`${router.pathname==='/choose'?'block':'hidden'} w-9/12 mx-auto h-1 bg-black border`}></div>
-                </Link>
-                {/* <span className='text-gray-800 px-4 text-lg'>|</span> */}
-            </div>
-            {/* <div className='flex items-center'>
-                <Button
-                overrideClassName='mx-2'
-                isLink={true}
-                linkHref='/login'
-                >
-                    Log in
-                </Button>
-                <Button
-                    variant='secondary'
+            <div className='w-full flex items-end justify-end'>
+                <div className='flex flex-row items-center'>
+                    <Link href='/explore'>
+                        <p className={`text-black font-medium text-center mx-2 px-2 py-1 rounded hover:bg-gray-200`}>Explore</p>
+                    </Link>
+                    <Link href='/choose'>
+                        <p className={`text-black font-medium text-center mx-2 px-2 py-1 rounded hover:bg-gray-200`}>Choose Path</p>
+                    </Link>
+                </div>
+                <div className='flex items-center'>
+                    <Button
                     overrideClassName='mx-2'
                     isLink={true}
-                    linkHref='/signup'
-                >
-                    Join gradcub
-                </Button>
-            </div> */}
+                    linkHref='/login'
+                    >
+                        Log in
+                    </Button>
+                    <Button
+                        variant='secondary'
+                        overrideClassName='mx-2'
+                        isLink={true}
+                        linkHref='/signup'
+                    >
+                        Join gradcub
+                    </Button>
+                </div>
+            </div>
         </div>
         <Toaster
             position='bottom-right'
