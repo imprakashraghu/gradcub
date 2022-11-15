@@ -16,7 +16,7 @@ function Explore() {
         async function getPaths() {
             try {
                 setLoading(true)
-                const { data, error } = await supabase.from('paths').select('*,category(*),path_skills(skill_id(skill_name)))')
+                const { data, error } = await supabase.from('paths').select('*,category(*),path_skills(skill_id(name)))')
                 if (error) toast.error(error.message||'Could not get paths')
                 dispatch({
                     type: 'ADD_ALL_PATHS',

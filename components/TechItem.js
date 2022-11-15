@@ -5,8 +5,8 @@ function TechItem({
     name
 }) {
   return (
-    <div className='w-full text-center px-3 py-2 text-sm text-white bg-black shadow-sm border rounded-lg mx-1'>
-        {name}
+    <div className='w-full max-h-10 text-center px-3 py-2 text-sm text-white bg-black shadow-sm border rounded-lg mx-1'>
+        <p>{name}</p>
     </div>
   )
 }

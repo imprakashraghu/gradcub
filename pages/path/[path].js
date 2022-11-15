@@ -177,15 +177,33 @@ export default function Path({ pathData=[] }) {
                                 'w-full p-3',
                                 ''
                             )}>
-                            <div className='w-1/3 grid grid-cols-4 gap-2'>
-                                {
-                                    pathData?.path_skills?.map(({skill_id}) => (
-                                        <TechItem
-                                            key={skill_id?.skill_name}
-                                            name={skill_id?.skill_name}
-                                        />
-                                    ))
-                                }
+                            <div className='w-full grid grid-cols-3 gap-4'>
+                                <div className='w-full flex flex-col items-start border-r pr-6'>
+                                    <p className='w-full text-gray-600 text-left py-2 text-md mb-2'>Skills Involved</p>
+                                    <div className='w-full grid grid-cols-4 gap-2'>
+                                        {
+                                            pathData?.path_skills?.filter(({skill_id}) => skill_id?.type === 'skill')?.map(({skill_id}) => (
+                                                <TechItem
+                                                    key={skill_id?.name}
+                                                    name={skill_id?.name}
+                                                />
+                                            ))
+                                        }
+                                    </div>
+                                </div>
+                                <div className='w-full flex flex-col items-start'>
+                                    <p className='w-full text-gray-600 text-left py-2 text-md mb-2'>Tools Involved</p>
+                                    <div className='w-full grid grid-cols-4 gap-2'>
+                                        {
+                                            pathData?.path_skills?.filter(({skill_id}) => skill_id?.type === 'tool')?.map(({skill_id}) => (
+                                                <TechItem
+                                                    key={skill_id?.name}
+                                                    name={skill_id?.name}
+                                                />
+                                            ))
+                                        }
+                                    </div>
+                                </div>
                             </div>
                         </Tab.Panel>
                         <Tab.Panel
@@ -273,7 +291,7 @@ export default function Path({ pathData=[] }) {
 export async function getServerSideProps({ params }) {
 
     try {
-        const { data, error } = await supabase.from('paths').select('*,category(*),path_skills(skill_id(skill_name)),path_helpingsites(site_id(*)))').eq('slug', params?.path).single()
+        const { data, error } = await supabase.from('paths').select('*,category(*),path_skills(skill_id(name,type)),path_helpingsites(site_id(*)))').eq('slug', params?.path).single()
         if (error) console.log(error);
         return {
             props: {
